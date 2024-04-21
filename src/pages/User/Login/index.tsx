@@ -18,9 +18,10 @@ import {
 import { Helmet, history, useModel } from '@umijs/max';
 import { Alert, Tabs, message } from 'antd';
 import { createStyles } from 'antd-style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
+import { listChartVoByPageUsingPost } from '@/services/my-bi/chartController';
 const useStyles = createStyles(({ token }) => {
   return {
     action: {
@@ -68,7 +69,7 @@ const ActionIcons = () => {
 };
 const Lang = () => {
   const { styles } = useStyles();
-  return;
+  return ;
 };
 const LoginMessage: React.FC<{
   content: string;
@@ -89,6 +90,11 @@ const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
   const { styles } = useStyles();
+  useEffect(()=>{
+    listChartVoByPageUsingPost({}).then(res=>{
+      console.log(res)
+    })
+  })
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
@@ -132,7 +138,7 @@ const Login: React.FC = () => {
           {'登录'}- {Settings.title}
         </title>
       </Helmet>
-      <Lang />
+      {/* <Lang /> */}
       <div
         style={{
           flex: '1',
@@ -145,8 +151,8 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src="/logo.svg" />}
-          title="Ant Design"
-          subTitle={'Ant Design 是西湖区最具影响力的 Web 设计规范'}
+          title="智能BI"
+          subTitle={'智能BI 是西湖区最具影响力的 Web 设计规范'}
           initialValues={{
             autoLogin: true,
           }}
