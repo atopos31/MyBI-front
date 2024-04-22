@@ -1,3 +1,4 @@
+
 export default [
   {
     path: '/user',
@@ -5,6 +6,8 @@ export default [
     routes: [{ name: '登录', path: '/user/login', component: './User/Login' }],
   },
   { path: '/welcome', name: '欢迎', icon: 'smile', component: './Welcome' },
+  { path: '/add_chart', name: '智能分析', icon: 'BarChart', component: './AddChart' },
+  { path: '/dot_to', name: '智能绘制', icon: 'Branches', component: './DotTo' },
   {
     path: '/admin',
     name: '管理页',
@@ -15,7 +18,6 @@ export default [
       { path: '/admin/sub-page', name: '二级管理页', component: './Admin' },
     ],
   },
-  { name: '查询表格', icon: 'table', path: '/list', component: './TableList' },
   { path: '/', redirect: '/welcome' },
   { path: '*', layout: false, component: './404' },
 ];

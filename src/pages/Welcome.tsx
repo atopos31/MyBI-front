@@ -94,7 +94,8 @@ const Welcome: React.FC = () => {
         }}
         bodyStyle={{
           backgroundImage:
-            initialState?.settings?.navTheme === 'realDark'
+            // initialState?.settings?.navTheme === 'realDark'
+            'realDark' === 'realDark'
               ? 'background-image: linear-gradient(75deg, #1A1B1F 0%, #191C1F 100%)'
               : 'background-image: linear-gradient(75deg, #FBFDFF 0%, #F5F7FF 100%)',
         }}
@@ -126,8 +127,8 @@ const Welcome: React.FC = () => {
               width: '65%',
             }}
           >
-            智能BI 是一个整合了 umi，智能BI 和 ProComponents
-            的脚手架方案。致力于在设计规范和基础组件的基础上，继续向上构建，提炼出典型模板/业务组件/配套设计资源，进一步提升企业级中后台产品设计研发过程中的『用户』和『设计者』的体验。
+            智能BI是一个基于 React + Spring Boot + MQ + AIGC 的智能数据分析平台 。 区别于传统
+            BI，用户只需要导入原始数据集、并输入分析诉求，就能自动生成可视化图表及分析结论，实现数据分析的降本增效。
           </p>
           <div
             style={{
@@ -135,26 +136,7 @@ const Welcome: React.FC = () => {
               flexWrap: 'wrap',
               gap: 16,
             }}
-          >
-            <InfoCard
-              index={1}
-              href="https://umijs.org/docs/introduce/introduce"
-              title="了解 umi"
-              desc="umi 是一个可扩展的企业级前端应用框架,umi 以路由为基础的，同时支持配置式路由和约定式路由，保证路由的功能完备，并以此进行功能扩展。"
-            />
-            <InfoCard
-              index={2}
-              title="了解 智能BI"
-              href="https://ant.design"
-              desc="antd 是基于 智能BI 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。"
-            />
-            <InfoCard
-              index={3}
-              title="了解 Pro Components"
-              href="https://procomponents.ant.design"
-              desc="ProComponents 是一个基于 智能BI 做了更高抽象的模板组件，以 一个组件就是一个页面为开发理念，为中后台开发带来更好的体验。"
-            />
-          </div>
+          ></div>
         </div>
       </Card>
     </PageContainer>

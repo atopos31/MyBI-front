@@ -1,4 +1,15 @@
 declare namespace API {
+  type AIChartVO = {
+    genChart?: string;
+    genResult?: string;
+  };
+
+  type BaseResponseAIChartVO_ = {
+    code?: number;
+    data?: AIChartVO;
+    message?: string;
+  };
+
   type BaseResponseBoolean_ = {
     code?: number;
     data?: boolean;
@@ -112,6 +123,7 @@ declare namespace API {
     goal?: string;
     id?: number;
     isDelete?: number;
+    name?: string;
     pageSize?: number;
     sortField?: string;
     sortOrder?: string;
@@ -134,6 +146,12 @@ declare namespace API {
 
   type DeleteRequest = {
     id?: number;
+  };
+
+  type genChartByAiUsingPOSTParams = {
+    charType?: string;
+    goal?: string;
+    name?: string;
   };
 
   type getChartVOByIdUsingGETParams = {

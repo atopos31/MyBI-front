@@ -5,28 +5,18 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <DefaultFooter
+      //版权关闭
+      copyright={false}
       style={{
         background: 'none',
       }}
       links={[
-        {
-          key: '智能BI',
-          title: '智能BI',
-          href: 'https://pro.ant.design',
-          blankTarget: true,
-        },
-        {
-          key: 'github',
-          title: <GithubOutlined />,
-          href: 'https://hackerxiao.online',
-          blankTarget: true,
-        },
-        {
-          key: '智能BI',
-          title: '智能BI',
-          href: 'https://ant.design',
-          blankTarget: true,
-        },
+        // {
+        //   key: 'github开源地址',
+        //   title: <GithubOutlined />,
+        //   href: 'https://github.com/atopos31/Smart-BI',
+        //   blankTarget: true,
+        // },
       ]}
     />
   );
