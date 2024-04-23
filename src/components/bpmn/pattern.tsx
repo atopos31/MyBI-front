@@ -106,10 +106,6 @@ const BpmnPattern = (props: IProps) => {
       <div>选区</div>
       <div className="pattern-start" onMouseDown={() => onMouseDownFun('addStartNode')} />
       <div>开始</div>
-      <div className="pattern-user" onMouseDown={() => onMouseDownFun('addUserTask')}></div>
-      <div>用户任务</div>
-      <div className="pattern-user" onMouseDown={() => onMouseDownFun('addServiceTask')}></div>
-      <div>系统任务</div>
       <div className="pattern-circle" onMouseDown={() => onMouseDownFun('circle')}></div>
       <div>圆形</div>
       <div className="pattern-rect" onMouseDown={() => onMouseDownFun('rect')}></div>

@@ -4,9 +4,19 @@ declare namespace API {
     genResult?: string;
   };
 
+  type AIGraphVO = {
+    genGraph?: string;
+  };
+
   type BaseResponseAIChartVO_ = {
     code?: number;
     data?: AIChartVO;
+    message?: string;
+  };
+
+  type BaseResponseAIGraphVO_ = {
+    code?: number;
+    data?: AIGraphVO;
     message?: string;
   };
 
@@ -152,6 +162,10 @@ declare namespace API {
     charType?: string;
     goal?: string;
     name?: string;
+  };
+
+  type GenGraphByAiRequest = {
+    goal?: string;
   };
 
   type getChartVOByIdUsingGETParams = {

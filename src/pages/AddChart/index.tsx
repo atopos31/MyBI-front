@@ -36,6 +36,9 @@ const AddChart: React.FC = () => {
     const file = values.upload.file.originFileObj;
     try {
       const res = await genChartByAiUsingPost(params, {}, file);
+      if (res.code != 0) {
+        throw new Error("请求失败" + res.message)
+      }
       const chartOptions = JSON.parse(res.data?.genChart ?? '');
       if (!chartOptions) {
         throw new Error('解析失败');

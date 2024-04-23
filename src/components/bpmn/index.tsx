@@ -1,19 +1,18 @@
 import LogicFlow from '@logicflow/core';
+import '@logicflow/core/dist/style/index.css';
 import {
   BpmnElement,
-  BpmnXmlAdapter,
-  Snapshot,
   Control,
   Menu,
-  SelectionSelect,
   NodeResize,
+  SelectionSelect,
+  Snapshot,
 } from '@logicflow/extension';
-import './index.css';
 import '@logicflow/extension/lib/style/index.css';
-import '@logicflow/core/dist/style/index.css';
 import { useEffect, useRef, useState } from 'react';
-import BpmnPattern from './pattern';
+import './index.css';
 import BpmnIo from './io';
+import BpmnPattern from './pattern';
 const config = {
   stopScrollGraph: true,
   stopZoomGraph: true,
@@ -26,11 +25,11 @@ const config = {
     enabled: true,
   },
   snapline: true,
-//   width: 1500,
+  // width: 1500,
   height: 600,
 };
 
-const index =  ({ data }: { data: any })=> {
+const index = ({ data }: { data: any }) => {
   const refContainer = useRef<any>();
   const [lfData, setLfData] = useState<any>(null);
   useEffect(() => {
@@ -46,22 +45,25 @@ const index =  ({ data }: { data: any })=> {
       container: document.querySelector('#graph') as HTMLElement,
       // container: refContainer.current,
       ...config,
-      
     });
     // console.log(data)
-    lf.render(data)
+    lf.render(data);
     setLfData(lf);
   }, []);
   //监听data更改
   useEffect(() => {
     if (!lfData) return;
     // setIState(() => true);
-    lfData.render(data)
+    try {
+      lfData.render(data);
+    } catch (e: any) {
+      console.log(e);
+    }
   }, [data]);
 
   return (
     <div className="bpmn-example-container">
-      <div id="graph" ref={refContainer} className="viewport"></div>
+      <div id="graph"  ref={refContainer} className="viewport"></div>
       {lfData && (
         <>
           <BpmnPattern lf={lfData} />
@@ -72,4 +74,3 @@ const index =  ({ data }: { data: any })=> {
   );
 };
 export default index;
-
