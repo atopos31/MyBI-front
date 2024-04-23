@@ -37,11 +37,11 @@ const AddChart: React.FC = () => {
     try {
       const res = await genChartByAiUsingPost(params, {}, file);
       if (res.code != 0) {
-        throw new Error("请求失败" + res.message)
+        throw new Error("请求失败:" + res.message)
       }
       const chartOptions = JSON.parse(res.data?.genChart ?? '');
       if (!chartOptions) {
-        throw new Error('解析失败');
+        throw new Error('解析失败!');
       } else {
         console.log(res.data?.genChart);
         message.success('分析成功！');
@@ -51,7 +51,7 @@ const AddChart: React.FC = () => {
         setoptions(chartOptions);
       }
     } catch (e: any) {
-      message.error('分析失败！原因:' + e.message, 3);
+      message.error('失败！原因:' + e.message, 3);
     }
 
     setsubmitting(false);

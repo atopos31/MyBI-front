@@ -69,11 +69,11 @@ const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const { setInitialState } = useModel('@@initialState');
   const { styles } = useStyles();
-  useEffect(()=>{
-    listChartVoByPageUsingPost({}).then(res=>{
-      console.log(res)
-    })
-  })
+  // useEffect(()=>{
+  //   listChartVoByPageUsingPost({}).then(res=>{
+  //     console.log(res)
+  //   })
+  // })
 
   /*
   获取登录信息
