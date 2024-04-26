@@ -1,25 +1,4 @@
 declare namespace API {
-  type AIChartVO = {
-    genChart?: string;
-    genResult?: string;
-  };
-
-  type AIGraphVO = {
-    genGraph?: string;
-  };
-
-  type BaseResponseAIChartVO_ = {
-    code?: number;
-    data?: AIChartVO;
-    message?: string;
-  };
-
-  type BaseResponseAIGraphVO_ = {
-    code?: number;
-    data?: AIGraphVO;
-    message?: string;
-  };
-
   type BaseResponseBoolean_ = {
     code?: number;
     data?: boolean;
@@ -29,6 +8,12 @@ declare namespace API {
   type BaseResponseChart_ = {
     code?: number;
     data?: Chart;
+    message?: string;
+  };
+
+  type BaseResponseGraph_ = {
+    code?: number;
+    data?: Graph;
     message?: string;
   };
 
@@ -53,6 +38,12 @@ declare namespace API {
   type BaseResponsePageChart_ = {
     code?: number;
     data?: PageChart_;
+    message?: string;
+  };
+
+  type BaseResponsePageGraph_ = {
+    code?: number;
+    data?: PageGraph_;
     message?: string;
   };
 
@@ -115,6 +106,8 @@ declare namespace API {
   type ChartAddRequest = {
     charType?: string;
     chartData?: string;
+    genChart?: string;
+    genResult?: string;
     goal?: string;
     name?: string;
   };
@@ -166,9 +159,15 @@ declare namespace API {
 
   type GenGraphByAiRequest = {
     goal?: string;
+    name?: string;
   };
 
   type getChartVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getGraphVOByIdUsingGETParams = {
     /** id */
     id?: number;
   };
@@ -186,6 +185,34 @@ declare namespace API {
   type getUserVOByIdUsingGETParams = {
     /** id */
     id?: number;
+  };
+
+  type Graph = {
+    createtime?: string;
+    gengraph?: string;
+    genresult?: string;
+    goal?: string;
+    id?: number;
+    isdelete?: number;
+    name?: string;
+    updatetime?: string;
+    userid?: number;
+  };
+
+  type GraphAddRequest = {
+    gengraph?: string;
+    genresult?: string;
+    goal?: string;
+    name?: string;
+  };
+
+  type GraphQueryRequest = {
+    current?: number;
+    isDelete?: number;
+    pageSize?: number;
+    sortField?: string;
+    sortOrder?: string;
+    userId?: number;
   };
 
   type LoginUserVO = {
@@ -211,6 +238,19 @@ declare namespace API {
     orders?: OrderItem[];
     pages?: number;
     records?: Chart[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageGraph_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: Graph[];
     searchCount?: boolean;
     size?: number;
     total?: number;

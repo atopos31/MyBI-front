@@ -9,6 +9,7 @@ import {
   Snapshot,
 } from '@logicflow/extension';
 import '@logicflow/extension/lib/style/index.css';
+import { message } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import './index.css';
 import BpmnIo from './io';
@@ -57,13 +58,13 @@ const index = ({ data }: { data: any }) => {
     try {
       lfData.render(data);
     } catch (e: any) {
-      console.log(e);
+      message.error('解析数据失败，请重新生成', 3);
     }
   }, [data]);
 
   return (
     <div className="bpmn-example-container">
-      <div id="graph"  ref={refContainer} className="viewport"></div>
+      <div id="graph" ref={refContainer} className="viewport"></div>
       {lfData && (
         <>
           <BpmnPattern lf={lfData} />

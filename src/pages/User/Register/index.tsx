@@ -1,19 +1,13 @@
 import { Footer } from '@/components';
-import {
-  LockOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import {
-  LoginForm,
-  ProFormText,
-} from '@ant-design/pro-components';
+import { getLoginUserUsingGet, userLoginUsingPost, userRegisterUsingPost } from '@/services/my-bi/userController';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { Helmet, Link, history, useModel } from '@umijs/max';
 import { Alert, Tabs, message } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
-import { getLoginUserUsingGet, userLoginUsingPost } from '@/services/my-bi/userController';
 const useStyles = createStyles(({ token }) => {
   return {
     action: {
@@ -92,21 +86,21 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.UserLoginRequest) => {
     try {
       // 登录
-      const msg = await userLoginUsingPost({
+      const msg = await userRegisterUsingPost({
         ...values,
       });
       if (msg.code === 0) {
-        const defaultLoginSuccessMessage = '登录成功！';
+        const defaultLoginSuccessMessage = '注册成功！';
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
       } else {
-        message.error(msg.message)
+        message.error(msg.message);
       }
     } catch (error) {
-      const defaultLoginFailureMessage = '登录失败，请重试！';
+      const defaultLoginFailureMessage = '注册失败，请重试！';
       console.log(error);
       message.error(defaultLoginFailureMessage);
     }
@@ -115,7 +109,7 @@ const Login: React.FC = () => {
     <div className={styles.container}>
       <Helmet>
         <title>
-          {'登录'}- {Settings.title}
+          {'注册'}- {Settings.title}
         </title>
       </Helmet>
       <div
@@ -125,6 +119,11 @@ const Login: React.FC = () => {
         }}
       >
         <LoginForm
+          submitter={{
+            searchConfig: {
+              submitText: '注册',
+            },
+          }}
           contentStyle={{
             minWidth: 280,
             maxWidth: '75vw',
@@ -143,8 +142,8 @@ const Login: React.FC = () => {
             items={[
               {
                 key: 'account',
-                label: '账户密码登录',
-              }
+                label: '注册',
+              },
             ]}
           />
           {type === 'account' && (
@@ -177,26 +176,35 @@ const Login: React.FC = () => {
                   },
                 ]}
               />
+              <ProFormText.Password
+                name="checkPassword"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <LockOutlined />,
+                }}
+                placeholder={'请输入确认密码'}
+                rules={[
+                  {
+                    required: true,
+                    message: '确认密码是必填项！',
+                  },
+                ]}
+              />
             </>
           )}
 
-          
           <div
             style={{
               marginBottom: 24,
             }}
           >
-            <Link to={'/user/register'}>
-              注册
-            </Link>
+            <Link to={'/user/login'}>登录</Link>
           </div>
         </LoginForm>
       </div>
       <div>
-
-      <Footer />
+        <Footer />
       </div>
-      
     </div>
   );
 };

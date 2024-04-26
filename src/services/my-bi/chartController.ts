@@ -77,7 +77,7 @@ export async function genChartByAiUsingPost(
     }
   });
 
-  return request<API.BaseResponseAIChartVO_>('/api/Chart/gen', {
+  return request<API.BaseResponseChart_>('/api/Chart/gen', {
     method: 'POST',
     params: {
       ...params,
