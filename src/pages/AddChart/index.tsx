@@ -37,7 +37,7 @@ const AddChart: React.FC = () => {
       ...values,
       upload: undefined,
     };
-    const file = values.upload.file.originFileObj;
+    const file = values.upload.file;
     try {
       const res = await genChartByAiUsingPost(params, {}, file);
       if (res.code != 0) {
@@ -135,7 +135,7 @@ const AddChart: React.FC = () => {
                   </Form.Item>
 
                   <Form.Item rules={[{required: true}]} label="上传文件" name="upload" valuePropName="filelist">
-                    <Upload maxCount={1} accept=".xlsx">
+                    <Upload beforeUpload={()=>{return false}} maxCount={1} accept=".xlsx">
                       <Form.Item>
                         <Button icon={<UploadOutlined />}>点击上传</Button>
                       </Form.Item>

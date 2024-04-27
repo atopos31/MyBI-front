@@ -123,7 +123,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const request = {
-  baseURL: 'http://localhost:8101',
+  // baseURL: 'https://bi.hackerxiao.online',
+  baseURL:"http://localhost:8101",
   //携带cookie
   withCredentials: true,
   ...errorConfig,
