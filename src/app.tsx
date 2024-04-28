@@ -124,7 +124,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  */
 export const request = {
   // baseURL: 'https://bi.hackerxiao.online',
-  baseURL:"http://localhost:8101",
+  baseURL:"https://bi.hackerxiao.online",
   //携带cookie
   withCredentials: true,
   ...errorConfig,

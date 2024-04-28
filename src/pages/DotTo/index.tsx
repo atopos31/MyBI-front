@@ -34,6 +34,7 @@ const DotTo: React.FC = () => {
       setBpmnData(JSON.parse(res.data?.gengraph ?? ''));
       setresultData(res.data?.genresult)
       setdatabody(res.data)
+      setissave(false)
     } catch (e: any) {
       message.error('分析失败！原因:' + e.message + "   请重试", 3);
     }
@@ -112,7 +113,7 @@ const DotTo: React.FC = () => {
                     >
                       {bpmnData ? "重新生成" : "生成"}
                     </Button>
-                    <Button htmlType="reset">重置</Button>
+                    <Button htmlType="reset" onClick={reset}>重置</Button>
                     <Button disabled={submitting ? true : resultData?false:true} type="primary" onClick={save}>
                         {isave ? "已收藏": "收藏"}
                       </Button>
